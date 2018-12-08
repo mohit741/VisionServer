@@ -4,13 +4,13 @@ import os
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-file_handler = logging.FileHandler('server.log')
+"""file_handler = logging.FileHandler('server.log')
 app.logger.addHandler(file_handler)
 app.logger.setLevel(logging.INFO)
 
 PROJECT_HOME = os.path.dirname(os.path.realpath(__file__))
 UPLOAD_FOLDER = '{}/uploads/'.format(PROJECT_HOME)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER"""
 
 
 @app.route('/')
@@ -20,7 +20,7 @@ def hello_world():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    app.logger.info(PROJECT_HOME)
+    #app.logger.info(PROJECT_HOME)
     if request.method == 'POST' and request.files['image']:
         app.logger.info(app.config['UPLOAD_FOLDER'])
         img = request.files['image']
@@ -34,4 +34,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(host='apivision.azurewebsites.net', debug=True)
+    app.run(host='0.0.0.0:5000', debug=True)

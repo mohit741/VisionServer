@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, Response
 import logging
 import os
 from werkzeug.utils import secure_filename
@@ -28,7 +28,9 @@ def predict():
         saved_path = os.path.join(app.config['UPLOAD_FOLDER'], img_name)
         app.logger.info("saving {}".format(saved_path))
         img.save(saved_path)
-        return 200
+        response = Response(status=200)
+        return response
     else:
-        return 404
+        response = Response(status=404)
+        return response
 

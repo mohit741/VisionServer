@@ -18,9 +18,9 @@ def hello_world():
     return 'Hello World!'
 
 
-@app.route('/predict', methods=['POST'])
+"""@app.route('/predict', methods=['POST'])
 def predict():
-    #app.logger.info(PROJECT_HOME)
+    app.logger.info(PROJECT_HOME)
     if request.method == 'POST' and request.files['image']:
         app.logger.info(app.config['UPLOAD_FOLDER'])
         img = request.files['image']
@@ -30,8 +30,5 @@ def predict():
         img.save(saved_path)
         return 200
     else:
-        return 404
+        return 404"""
 
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0:5000', debug=True)
